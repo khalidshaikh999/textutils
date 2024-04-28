@@ -9,6 +9,19 @@ const handleLoClick = () => {
     let newText= text.toLowerCase();
     setText(newText)
 }
+
+
+const handleExtraSpacesClick = () => {
+    let newText= text.split(/[  ]+/);
+    setText(newText.join(' '))
+}
+
+const handleCopyClick = () => {
+    let text = document.getElementById('myBox');
+    text.select();
+    navigator.clipboard.writeText(text.value);
+}
+
 const handleClearClick = () => {
     let newText= '';
     setText(newText)
@@ -23,25 +36,27 @@ const handleUpChange = (event) => {
 
   return (
     <>
-        <div className='container my-3'>
-            <h1 className='text-center mb-3'>{props.heading}</h1>
+        <div className={`container my-3 text-${props.mode==='dark'?'light':'dark'}`}>
+            <h1 className={`text-center mb-3 text-${props.mode==='dark'?'light':'dark'}`} >{props.heading}</h1>
             <div className="m-auto col-md-8">
                 <label htmlFor="myBox" className="form-label">{props.labelText}</label>
-                <textarea className="form-control" id="myBox" onChange={handleUpChange} value={text} rows="8"></textarea>
+                <textarea style={{backgroundColor: props.mode==='dark'?'#030054':'#fff', color: props.mode==='dark'?'#fff':'#000'}} className="form-control" id="myBox" onChange={handleUpChange} value={text} rows="8"></textarea>
             </div>
             <div className="my-3 m-auto col-md-8">
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-2" onClick={handleExtraSpacesClick}>Remove Extra Spaces</button>
+                <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy Text</button>
                 <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear</button>
             </div>
         </div>
-        <div className="container">
+        <div className={`container text-${props.mode==='dark'?'light':'dark'}`}>
             <div className="col-md-8 m-auto">
                 <h2 className="my-3">Your Text Summary</h2>
                 <p>{text.split(" ").length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(' ').length} minutes to read</p>
-                <h2 className="my-3">Your Text Priview</h2>
-                <p>{text}</p>
+                <h2 className="my-3">Your Text Preview</h2>
+                <p>{text.length>0?text:"Kindly write something in the above textBox to preview it here"}</p>
             </div>
         </div>
     </>
