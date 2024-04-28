@@ -9,12 +9,16 @@ const handleLoClick = () => {
     let newText= text.toLowerCase();
     setText(newText)
 }
+const handleClearClick = () => {
+    let newText= '';
+    setText(newText)
+}
 const handleUpChange = (event) => {
     console.log('on Change')
     setText(event.target.value)
 }
 
-    const [text, setText] = useState('Enter your text here');
+    const [text, setText] = useState('');
     // setText('Enter your new text here');
 
   return (
@@ -28,6 +32,7 @@ const handleUpChange = (event) => {
             <div className="my-3 m-auto col-md-8">
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear</button>
             </div>
         </div>
         <div className="container">
