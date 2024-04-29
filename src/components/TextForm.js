@@ -40,7 +40,7 @@ const handleUpChange = (event) => {
             <h1 className={`text-center mb-3 text-${props.mode==='dark'?'light':'dark'}`} >{props.heading}</h1>
             <div className="m-auto col-md-8">
                 <label htmlFor="myBox" className="form-label">{props.labelText}</label>
-                <textarea style={{backgroundColor: props.mode==='dark'?'#030054':'#fff', color: props.mode==='dark'?'#fff':'#000'}} className="form-control" id="myBox" onChange={handleUpChange} value={text} rows="8"></textarea>
+                <textarea style={{backgroundColor: props.mode==='dark'?'#042743':'#fff', color: props.mode==='dark'?'#fff':'#000'}} className="form-control" id="myBox" onChange={handleUpChange} value={text} rows="8"></textarea>
             </div>
             <div className="my-3 m-auto col-md-8">
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
